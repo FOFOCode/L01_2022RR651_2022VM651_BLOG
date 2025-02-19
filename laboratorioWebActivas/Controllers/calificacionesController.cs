@@ -27,5 +27,7 @@ namespace L01_2022RR651_2022VM651.Controllers
 			}
 			return Ok(listadoCalificaciones);
 		}
+
+
 	}
 }
