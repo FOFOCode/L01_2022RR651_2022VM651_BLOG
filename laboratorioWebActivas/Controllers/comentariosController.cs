@@ -110,5 +110,27 @@ namespace L01_2022RR651_2022VM651.Controllers
 
             return Ok(comentariosActual);
         }
+
+        //Metodo para obtener los top N usuarios con mas comentarios
+        [HttpGet]
+        [Route("GetTopUsuarios/{topN}")]
+        public IActionResult GetTopUsuarios(int topN)
+        {
+            var topUsuarios = (from c in _blogDBCcontext.comentarios
+                               group c by c.usuarioId into grupo
+                               orderby grupo.Count() descending
+                               select new
+                               {
+                                   UsuarioId = grupo.Key,
+                                   TotalComentarios = grupo.Count()
+                               }).Take(topN).ToList();
+
+            if (topUsuarios.Count == 0)
+            {
+                return NotFound("No hay comentarios registrados.");
+            }
+
+            return Ok(topUsuarios);
+        }
     }
 }
