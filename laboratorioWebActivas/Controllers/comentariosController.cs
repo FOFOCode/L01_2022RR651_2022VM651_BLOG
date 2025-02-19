@@ -63,9 +63,9 @@ namespace L01_2022RR651_2022VM651.Controllers
                 return NotFound();
             }
 
-            comentariosActual.publicacionId = comentario.publicacionId;
+            
             comentariosActual.comentario = comentario.comentario;
-            comentariosActual.usuarioId = comentario.usuarioId;
+            
 
             _blogDBCcontext.Entry(comentariosActual).State = EntityState.Modified;
             _blogDBCcontext.SaveChanges();
