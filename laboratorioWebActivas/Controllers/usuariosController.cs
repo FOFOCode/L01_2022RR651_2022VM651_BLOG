@@ -100,6 +100,19 @@ namespace L01_2022RR651_2022VM651.Controllers
 
         //Metodo de mostrar un listado filtrado por nombre y apellido
         [HttpGet]
-        [Route("Find/{filtro}")]
+        [Route("Find/{nombre}/{apellido}")]
+        public IActionResult FindByNombreAndApellido(string nombre,string apellido)
+        {
+            usuarios? usuarios = (from u in _blogDBCcontext.usuarios
+                                  where u.nombre == nombre && u.apellido == apellido
+                                  select u).FirstOrDefault();
+
+            if (usuarios == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(usuarios);
+        }
     }
 }
