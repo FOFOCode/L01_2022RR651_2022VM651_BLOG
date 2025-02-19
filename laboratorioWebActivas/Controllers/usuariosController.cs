@@ -65,7 +65,7 @@ namespace L01_2022RR651_2022VM651.Controllers
             }
 
 
-            usuarioActual.rolId = usuario.rolId;
+            
             usuarioActual.nombreUsuario = usuario.nombreUsuario;
             usuarioActual.clave = usuario.clave;
             usuarioActual.nombre = usuario.nombre;
